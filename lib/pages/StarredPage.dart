@@ -35,8 +35,12 @@ class StarredPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var comics = _retrieveSavedComics();
     return Scaffold(
+        backgroundColor: Colors.red.shade50,
         bottomNavigationBar: BottomNavBar(),
         appBar: AppBar(
+          backgroundColor: Colors.deepOrange.shade300,
+          elevation: 0,
+          centerTitle: true,
           title: Text("Browse your Favorite Comics"),
         ),
         body: FutureBuilder(

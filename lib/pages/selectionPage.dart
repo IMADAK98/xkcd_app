@@ -24,8 +24,11 @@ class SelectionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.red.shade50,
         bottomNavigationBar: BottomNavBar(),
         appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.deepOrange.shade300,
           title: Text('Comic selection'),
           centerTitle: true,
         ),

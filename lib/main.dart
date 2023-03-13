@@ -31,6 +31,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   var latestComicIndex = await getLatestComicNumber();
   runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    color: Colors.red,
     initialRoute: "/",
     routes: {
       "/": (context) =>

@@ -65,6 +65,7 @@ class _ComicPageState extends State<ComicPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.red.shade50,
       bottomNavigationBar: BottomNavBar(),
       appBar: AppBar(actions: <Widget>[
         IconButton(
@@ -79,29 +80,47 @@ class _ComicPageState extends State<ComicPage> {
         )
       ], title: Text("#${widget.comic["num"]}")),
       body: ListView(children: [
-        Center(
-          child: Text(
-            widget.comic["title"],
-            style: Theme.of(context).textTheme.displayMedium,
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20.0),
+                color: Colors.blueGrey.shade200.withOpacity(0.5)),
+            child: Center(
+              child: Text(
+                widget.comic["title"],
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
+            ),
           ),
         ),
-        InkWell(
-          onTap: () {
-            _launchComic(widget.comic["num"]);
-          },
-          splashColor: Colors.blue.withOpacity(0.5),
-          highlightColor: Colors.transparent,
-          child: Ink.image(
-            image: FileImage(File(widget.comic['img'])),
-            width: 300,
-            height: 200,
+        Container(
+          padding: EdgeInsets.all(10),
+          child: InkWell(
+            onTap: () {
+              _launchComic(widget.comic["num"]);
+            },
+            splashColor: Colors.blue.withOpacity(0.5),
+            highlightColor: Colors.transparent,
+            child: Ink.image(
+              fit: BoxFit.contain,
+              image: FileImage(File(widget.comic['img'])),
+              width: 200,
+              height: 350,
+            ),
           ),
         ),
         Padding(
           padding: EdgeInsets.all(8.0),
-          child: Text(
-            widget.comic["alt"],
-            style: TextStyle(fontSize: 24.0),
+          child: Container(
+            padding: EdgeInsets.all(12.0),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20.0),
+                color: Colors.blueGrey.shade100.withOpacity(0.5)),
+            child: Text(
+              "${widget.comic["alt"]}",
+              style: TextStyle(fontSize: 20.0, fontStyle: FontStyle.italic),
+            ),
           ),
         ),
       ]),

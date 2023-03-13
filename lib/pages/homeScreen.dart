@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:path_provider/path_provider.dart';
@@ -12,7 +11,6 @@ import 'package:xkcd_app/pages/comicPage.dart';
 import 'package:xkcd_app/pages/errorPage.dart';
 import '../Utilit/bottomNavBar.dart';
 import "selectionPage.dart";
-
 import '../Utilit/comicTile.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -33,8 +31,11 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.red.shade50,
         bottomNavigationBar: BottomNavBar(),
         appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.deepOrange.shade300,
           actions: [
             IconButton(
               onPressed: () {
