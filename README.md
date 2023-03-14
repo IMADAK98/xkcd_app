@@ -8,3 +8,8 @@ In addition to viewing comics, users can also search for specific comics using C
 
 Overall, this Flutter application provides users with a convenient and efficient way to browse and enjoy XKCD comics on their mobile devices.
 
+![Screenshot_1678819245](https://user-images.githubusercontent.com/105553867/225105835-1fae83fa-281d-4aea-9c78-42f6cf3e5501.png)
+![Screenshot_1678819264](https://user-images.githubusercontent.com/105553867/225105847-a7de182c-bf09-439b-8b49-b42d576e8dc9.png)
+![Screenshot_1678819278](https://user-images.githubusercontent.com/105553867/225105860-98c2dafb-6278-4602-87dd-0ccd8202cbd4.png)
+![Screenshot_1678819287](https://user-images.githubusercontent.com/105553867/225105869-872bc29c-a954-4dd0-899c-7960e66a359b.png)
+
