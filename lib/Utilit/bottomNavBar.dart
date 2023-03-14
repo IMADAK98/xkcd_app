@@ -49,7 +49,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
               case 2:
                 if (value == 2) {
                   BottomNavIndex = 2;
-                  Navigator.pushReplacementNamed(context, "/starred");
+                  Navigator.pushNamed(context, "/starred");
                 }
             }
           });

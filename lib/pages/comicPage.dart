@@ -12,17 +12,18 @@ class ComicPage extends StatefulWidget {
   ComicPage({super.key, required this.comic});
   final Map<String, dynamic> comic;
   late var docsDir;
+
   @override
   State<ComicPage> createState() => _ComicPageState();
 }
 
 class _ComicPageState extends State<ComicPage> {
-  bool isStarred = false;
   void _launchComic(int comicNumber) {
     launchUrl(Uri.parse("https://xkcd.com/$comicNumber"));
     debugPrint(widget.comic["img"]);
   }
 
+  late bool isStarred = false;
   @override
   void initState() {
     // TODO: implement initState
@@ -47,8 +48,12 @@ class _ComicPageState extends State<ComicPage> {
     List<int> savedComics = jsonDecode(file.readAsStringSync()).cast<int>();
     if (isStarred) {
       savedComics.remove(num);
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Removed successfully!")));
     } else {
       savedComics.add(num);
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Added successfully!")));
     }
     file.writeAsStringSync(json.encode(savedComics));
   }
@@ -67,35 +72,37 @@ class _ComicPageState extends State<ComicPage> {
     return Scaffold(
       backgroundColor: Colors.red.shade50,
       bottomNavigationBar: BottomNavBar(),
-      appBar: AppBar(actions: <Widget>[
-        IconButton(
-          onPressed: () {
-            _addToStarred(widget.comic["num"]);
-            setState(() {
-              isStarred = !isStarred;
-            });
-          },
-          icon: isStarred == true ? Icon(Icons.star) : Icon(Icons.star_border),
-          tooltip: "star Comic",
-        )
-      ], title: Text("#${widget.comic["num"]}")),
+      appBar: AppBar(
+          backgroundColor: Colors.deepOrange.shade300,
+          actions: <Widget>[
+            IconButton(
+              onPressed: () {
+                _addToStarred(widget.comic["num"]);
+                setState(() {
+                  isStarred = !isStarred;
+                });
+              },
+              icon: isStarred == true
+                  ? Icon(Icons.star)
+                  : Icon(Icons.star_border),
+              tooltip: "star Comic",
+            )
+          ],
+          title: Text("#${widget.comic["num"]}")),
       body: ListView(children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20.0),
-                color: Colors.blueGrey.shade200.withOpacity(0.5)),
-            child: Center(
-              child: Text(
-                widget.comic["title"],
-                style: Theme.of(context).textTheme.headlineSmall,
-              ),
+        Container(
+          padding: EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          child: Center(
+            child: Text(
+              widget.comic["title"],
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
           ),
         ),
         Container(
-          padding: EdgeInsets.all(10),
           child: InkWell(
             onTap: () {
               _launchComic(widget.comic["num"]);
@@ -106,21 +113,18 @@ class _ComicPageState extends State<ComicPage> {
               fit: BoxFit.contain,
               image: FileImage(File(widget.comic['img'])),
               width: 200,
-              height: 350,
+              height: 400,
             ),
           ),
         ),
-        Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Container(
-            padding: EdgeInsets.all(12.0),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20.0),
-                color: Colors.blueGrey.shade100.withOpacity(0.5)),
-            child: Text(
-              "${widget.comic["alt"]}",
-              style: TextStyle(fontSize: 20.0, fontStyle: FontStyle.italic),
-            ),
+        Container(
+          padding: EdgeInsets.all(12.0),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20.0),
+              color: Colors.deepOrange.shade100),
+          child: Text(
+            "${widget.comic["alt"]}",
+            style: TextStyle(fontSize: 20.0, fontStyle: FontStyle.italic),
           ),
         ),
       ]),

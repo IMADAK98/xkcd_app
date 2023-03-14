@@ -12,7 +12,36 @@ class ComicTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
+    return GestureDetector(
+      onTap: () => Navigator.push(context,
+          MaterialPageRoute(builder: (context) => ComicPage(comic: comic))),
+      child: Container(
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
+        child: Row(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+              ),
+              padding: EdgeInsets.all(8),
+              child: Image.file(
+                File(comic["img"]),
+                fit: BoxFit.fill,
+                width: 120,
+                height: 120,
+              ),
+            ),
+            Text(comic["title"],
+                style: const TextStyle(
+                  fontSize: 15,
+                ))
+          ],
+        ),
+      ),
+    );
+  }
+}
+/*ListTile(
       leading: Image.file(File(comic["img"])),
       title: Text(comic["title"]),
       onTap: () {
@@ -23,6 +52,4 @@ class ComicTile extends StatelessWidget {
                       comic: comic,
                     )));
       },
-    );
-  }
-}
+    )*/

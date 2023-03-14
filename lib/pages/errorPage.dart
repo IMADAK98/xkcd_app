@@ -12,7 +12,11 @@ class ErrorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Error page')),
+      backgroundColor: Colors.red.shade50,
+      appBar: AppBar(
+        title: Text('Error page'),
+        backgroundColor: Colors.deepOrange.shade300,
+      ),
       body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         Padding(
           padding: const EdgeInsets.all(15.0),

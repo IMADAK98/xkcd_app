@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart ' as http;
 import 'package:xkcd_app/pages/StarredPage.dart';
+import 'package:xkcd_app/pages/comicPage.dart';
 import 'package:xkcd_app/pages/selectionPage.dart';
 import 'dart:convert';
 import 'dart:async';

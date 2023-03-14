@@ -55,7 +55,7 @@ class StarredPage extends StatelessWidget {
                         separatorBuilder: (BuildContext context, int index) {
                           return Divider(
                             thickness: 2,
-                            color: Colors.black45,
+                            color: Colors.red,
                           );
                         },
                       )
